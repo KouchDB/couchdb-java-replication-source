@@ -4,7 +4,7 @@
 
 2. Launch the demo (main: com.kouchdb.dynamodb_source.AppLauncher)
 
-3. Execute the replication command (replacing IP address and PASSWORD as needed):
+3. Execute the replication command below (be sure to replace the 192.168.xxx.xxx to your local IP address and PASSWORD):
 
 ```
 curl -X POST http://192.168.1.77:5984/_replicate  -d '{"source":"http://192.168.1.77:8080/mock_db13", "target":"http://dbadmin:PASSWORD@192.168.1.77:5984/mock_replica13", "create_target": true}' -H "Content-Type: application/json"
