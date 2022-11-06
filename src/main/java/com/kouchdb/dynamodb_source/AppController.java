@@ -38,12 +38,16 @@ public class AppController {
 			@RequestParam(defaultValue = "0") String since,
 			@RequestParam(defaultValue = "-1") Integer timeout) throws JsonProcessingException {
 		if(since.equals("0")) {
-			System.err.println(new ObjectMapper().writeValueAsString(new ChangesResponse(Arrays.asList(new Result("1-a11f390ffa77a03c557ffbbc7c5fda75", "id-1",
-					Arrays.asList(new Revision("1-abcd")))), "1-a11f390ffa77a03c557ffbbc7c5fda75", 0)));
+//			System.err.println(new ObjectMapper().writeValueAsString(new ChangesResponse(Arrays.asList(new Result("1-a11f390ffa77a03c557ffbbc7c5fda75", "id-1",
+//					Arrays.asList(new Revision("1-abcd")))), "1-a11f390ffa77a03c557ffbbc7c5fda75", 0)));
+			/* CouchDB has very unusual and specific requirements for whitespace in the json serialization */
 			return "{\"results\":[\n{\"seq\":\"1-a11f390ffa77a03c557ffbbc7c5fda75\",\"id\":\"id-1\",\"changes\":[{\"rev\":\"1-abcd\"}]}\n],\n\"last_seq\":\"1-a11f390ffa77a03c557ffbbc7c5fda75\",\"pending\":0}";
+//			return new ChangesResponse(Arrays.asList(new Result("1-a11f390ffa77a03c557ffbbc7c5fda75", "id-1",
+//					Arrays.asList(new Revision("1-abcd")))), "1-a11f390ffa77a03c557ffbbc7c5fda75", 0);
 		}
 		else {
 			return "{\"results\":[\n\n],\n\"last_seq\":\"1-a11f390ffa77a03c557ffbbc7c5fda75\",\"pending\":0}";
+//			return new ChangesResponse(Arrays.asList(), "1-a11f390ffa77a03c557ffbbc7c5fda75", 0);
 		}
 	}
 
